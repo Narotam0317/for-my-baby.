@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Lydia 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', 'Comic Sans MS', cursive;
+      background: linear-gradient(135deg, #ffd6e8, #ffeaf4);
+      text-align: center;
+      color: #c2185b;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      margin-top: 30px;
+      font-size: 2.6em;
+    }
+
+    .subtitle {
+      font-size: 1.3em;
+      color: #e91e63;
+      margin-bottom: 15px;
+    }
+
+    .container {
+      padding: 15px;
+    }
+
+    .message-box {
+      background: white;
+      border-radius: 28px;
+      padding: 28px;
+      max-width: 90%;
+      margin: 30px auto;
+      box-shadow: 0 14px 35px rgba(0,0,0,0.12);
+      cursor: pointer;
+      transition: transform 0.25s;
+    }
+
+    .message-box:active {
+      transform: scale(0.97);
+    }
+
+    .message {
+      font-size: 1.4em;
+      line-height: 1.45;
+    }
+
+    .hint {
+      font-size: 0.85em;
+      color: #f06292;
+      margin-top: 12px;
+    }
+
+    footer {
+      margin: 35px 0 25px;
+      font-size: 1.1em;
+      color: #ad1457;
+    }
+
+    /* Hidden & Final Screens */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #ffb6d5, #ffe4f1);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+      z-index: 10;
+    }
+
+    .overlay-content {
+      background: white;
+      border-radius: 30px;
+      padding: 35px;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+      animation: popIn 0.4s ease;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .overlay h2 {
+      font-size: 2em;
+      margin-bottom: 15px;
+    }
+
+    .overlay p {
+      font-size: 1.3em;
+      line-height: 1.5;
+    }
+
+    .close {
+      margin-top: 20px;
+      font-size: 0.9em;
+      color: #f06292;
+    }
+
+    /* Floating hearts & roses */
+    .float {
+      position: fixed;
+      bottom: -50px;
+      pointer-events: none;
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2.2em; }
+      .message { font-size: 1.25em; }
+      .overlay p { font-size: 1.15em; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💖 Lydia 💖</h1>
+  <div class="subtitle">my sugar plum 🍬💗</div>
+
+  <div class="container">
+    <div class="message-box" onclick="changeMessage()">
+      <div class="message" id="message">
+        Lydia, I love you soooooooooooooooooo much 💕
+      </div>
+      <div class="hint">(keep tapping, my sugar plum 💞)</div>
+    </div>
+  </div>
+
+  <footer>
+    You make my life beautiful 🌸<br>
+    Forever & always, my sugar plum 💖
+  </footer>
+
+  <!-- Hidden Sweet Message -->
+  <div class="overlay" id="hiddenOverlay">
+    <div class="overlay-content">
+      <h2>💗 psst… 💗</h2>
+      <p>
+        Lydia, you’re my favorite person in the whole world.<br>
+        My safe place. My happiness. My sugar plum 🍬💖
+      </p>
+      <div class="close">(tap anywhere to continue)</div>
+    </div>
+  </div>
+
+  <!-- Final Big Confession -->
+  <div class="overlay" id="finalOverlay">
+    <div class="overlay-content">
+      <h2>💖 My Promise 💖</h2>
+      <p>
+        Lydia, no matter what happens,<br><br>
+        I will always be by your side.<br>
+        In the good days, the hard days,<br>
+        and every day in between.<br><br>
+        You are loved. You are cherished.<br>
+        Always. 💕
+      </p>
+      <div class="close">(I love you, my sugar plum 🍬)</div>
+    </div>
+  </div>
+
+  <script>
+    const messages = [
+      "Lydia, I love you soooooooooooooooooo much 💕",
+      "You make my life beautiful, my sugar plum 🌷",
+      "Every day feels brighter because of you ☀️",
+      "Your smile melts my heart, sugar plum 💖",
+      "I’m so lucky to love you, Lydia 🌸",
+      "You are my heart, my happiness, my everything 💞",
+      "With you, everything feels right 💗",
+      "I choose you. Always. 💕"
+    ];
+
+    let index = 0;
+    let taps = 0;
+
+    function changeMessage() {
+      taps++;
+      index = (index + 1) % messages.length;
+      document.getElementById("message").innerText = messages[index];
+
+      if (taps === 6) {
+        document.getElementById("hiddenOverlay").style.display = "flex";
+      }
+
+      if (taps === 12) {
+        document.getElementById("finalOverlay").style.display = "flex";
+      }
+    }
+
+    document.querySelectorAll(".overlay").forEach(overlay => {
+      overlay.addEventListener("click", () => {
+        overlay.style.display = "none";
+      });
+    });
+
+    /* Floating hearts & roses */
+    const icons = ["💖", "💗", "💕", "🌹", "🌸"];
+
+    function createFloat() {
+      const el = document.createElement("div");
+      el.className = "float";
+      el.innerText = icons[Math.floor(Math.random() * icons.length)];
+      el.style.left = Math.random() * 100 + "vw";
+      el.style.animationDuration = (6 + Math.random() * 4) + "s";
+      el.style.fontSize = (20 + Math.random() * 20) + "px";
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 9000);
+    }
+
+    setInterval(createFloat, 500);
+  </script>
+
+</body>
+</html>
